@@ -1,7 +1,7 @@
 package database
 
 import (
-	"cap-api/internal/entity"
+	"github.com/dpcamargo/fullcycle-api/internal/entity"
 
 	"gorm.io/gorm"
 )

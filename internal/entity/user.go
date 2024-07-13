@@ -1,9 +1,9 @@
 package entity
 
 import (
-	"cap-api/pkg/entity"
-
 	"golang.org/x/crypto/bcrypt"
+
+	"github.com/dpcamargo/fullcycle-api/pkg/entity"
 )
 
 type User struct {

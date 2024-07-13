@@ -1,6 +1,6 @@
 package database
 
-import "cap-api/internal/entity"
+import "github.com/dpcamargo/fullcycle-api/internal/entity"
 
 type UserInterface interface {
 	Create(user *entity.User) error

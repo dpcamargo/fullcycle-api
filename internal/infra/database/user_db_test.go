@@ -1,10 +1,12 @@
 package database
 
 import (
-	"cap-api/internal/entity"
+	"github.com/dpcamargo/fullcycle-api/internal/entity"
+
 	"testing"
 
 	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/require"
 	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"
 )
@@ -14,18 +16,18 @@ func TestCreateUser(t *testing.T) {
 	if err != nil {
 		t.Error(err)
 	}
-	if err := db.AutoMigrate(&entity.User{}); err != nil {
+	if err = db.AutoMigrate(&entity.User{}); err != nil {
 		t.Error(err)
 	}
 	user, _ := entity.NewUser("John Doe", "email@email.com", "123456")
 	userDB := NewUser(db)
 
 	err = userDB.Create(user)
-	assert.Nil(t, err)
+	require.NoError(t, err)
 
 	var userFound entity.User
 	err = db.First(&userFound, "id = ?", user.ID).Error
-	assert.Nil(t, err)
+	require.NoError(t, err)
 	assert.Equal(t, user.ID, userFound.ID)
 	assert.Equal(t, user.Name, userFound.Name)
 	assert.Equal(t, user.Email, userFound.Email)
@@ -37,17 +39,18 @@ func TestFindByEmail(t *testing.T) {
 	if err != nil {
 		t.Error(err)
 	}
-	if err := db.AutoMigrate(&entity.User{}); err != nil {
+
+	if err = db.AutoMigrate(&entity.User{}); err != nil {
 		t.Error(err)
 	}
 	user, _ := entity.NewUser("John Doe", "email@email.com", "123456")
 	userDB := NewUser(db)
 
 	err = userDB.Create(user)
-	assert.Nil(t, err)
+	require.NoError(t, err)
 
 	userFound, err := userDB.FindByEmail(user.Email)
-	assert.Nil(t, err)
+	require.NoError(t, err)
 	assert.Equal(t, user.ID, userFound.ID)
 	assert.Equal(t, user.Name, userFound.Name)
 	assert.Equal(t, user.Email, userFound.Email)

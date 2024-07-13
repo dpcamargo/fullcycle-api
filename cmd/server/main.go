@@ -1,6 +1,6 @@
 package main
 
-import "cap-api/configs"
+import "github.com/dpcamargo/fullcycle-api/configs"
 
 func main() {
 	_, err := configs.LoadConfig("./cmd/server")

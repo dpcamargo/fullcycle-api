@@ -1,9 +1,10 @@
 package entity
 
 import (
-	"cap-api/pkg/entity"
 	"errors"
 	"time"
+
+	"github.com/dpcamargo/fullcycle-api/pkg/entity"
 )
 
 var (
