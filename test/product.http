@@ -1,0 +1,31 @@
+POST http://localhost:8000/products
+Content-Type: application/json
+
+{
+  "name": "product 1",
+  "price": 100
+}
+
+####
+
+GET http://localhost:8000/products/b29a9882-808f-454d-927d-d1b154e35c7e
+Authorization: Bearer 
+####
+
+PUT http://localhost:8000/products/b29a9882-808f-454d-927d-d1b154e35c7e
+Content-Type: application/json
+Authorization: Bearer 
+
+{
+  "name": "product 101",
+  "price": 1000
+}
+
+####
+
+DELETE http://localhost:8000/products/3ee4cf6c-24fd-489a-acc2-03778a852814
+
+
+####
+
+GET http://localhost:8000/products?sort=desc&page=1&limit=10
